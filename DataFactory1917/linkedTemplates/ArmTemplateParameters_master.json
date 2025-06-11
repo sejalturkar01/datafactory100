@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DataFactory1917"
+		},
+		"AzureDataLakeStorage_datafactory_accountKey": {
+			"value": ""
+		},
+		"AzureSynapse_datapool_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage_datafactory_properties_typeProperties_url": {
+			"value": "https://datalakesejal.dfs.core.windows.net/"
+		},
+		"AzureSynapse_datapool_properties_typeProperties_server": {
+			"value": "sejalworkspace1902.sql.azuresynapse.net"
+		},
+		"AzureSynapse_datapool_properties_typeProperties_database": {
+			"value": "datapool"
+		},
+		"AzureSynapse_datapool_properties_typeProperties_userName": {
+			"value": "sqladminuser"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

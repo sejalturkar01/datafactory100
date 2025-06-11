@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DataFactory1917"
+		},
+		"AzureDataLakeStorage_datafactory_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage_datafactory'"
+		},
+		"AzureSynapse_datapool_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSynapse_datapool'"
+		},
+		"AzureDataLakeStorage_datafactory_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalakesejal.dfs.core.windows.net/"
+		},
+		"AzureSynapse_datapool_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sejalworkspace1902.sql.azuresynapse.net"
+		},
+		"AzureSynapse_datapool_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "datapool"
+		},
+		"AzureSynapse_datapool_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladminuser"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "DataFactory1917_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage_datafactory_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage_datafactory_accountKey')]"
+					},
+					"AzureSynapse_datapool_password": {
+						"value": "[parameters('AzureSynapse_datapool_password')]"
+					},
+					"AzureDataLakeStorage_datafactory_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage_datafactory_properties_typeProperties_url')]"
+					},
+					"AzureSynapse_datapool_properties_typeProperties_server": {
+						"value": "[parameters('AzureSynapse_datapool_properties_typeProperties_server')]"
+					},
+					"AzureSynapse_datapool_properties_typeProperties_database": {
+						"value": "[parameters('AzureSynapse_datapool_properties_typeProperties_database')]"
+					},
+					"AzureSynapse_datapool_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSynapse_datapool_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
